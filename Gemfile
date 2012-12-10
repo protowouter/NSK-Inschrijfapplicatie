@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby "1.9.3"
 
 gem 'rails'
 
@@ -29,11 +30,6 @@ group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
   gem 'uglifier'
-  
-  platform :ruby do
-    gem 'libv8'
-    gem 'therubyracer'
-  end
 end
 
 gem 'jquery-rails'
