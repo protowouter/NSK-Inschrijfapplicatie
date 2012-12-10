@@ -15,7 +15,8 @@ gem 'chronic_duration'
 gem 'client_side_validations'
 gem 'cancan'
 gem 'settingslogic'
-gem "comma"
+gem 'comma'
+gem 'thin'
 
 group :development do
   gem 'annotate'
