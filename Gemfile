@@ -17,11 +17,13 @@ gem 'cancan'
 gem 'settingslogic'
 gem 'comma'
 gem 'thin'
+gem 'wicked'
 
 group :development do
   gem 'annotate'
   gem 'populator'
   gem 'faker'
+  gem 'sqlite3'
 end
 
 

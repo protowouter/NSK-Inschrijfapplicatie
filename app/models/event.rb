@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
   belongs_to :sex
+  belongs_to :meeting
   has_many :event_participations, :dependent => :destroy, :order => 'best_performance'
   has_many :entries, :through => :event_participations
 end
