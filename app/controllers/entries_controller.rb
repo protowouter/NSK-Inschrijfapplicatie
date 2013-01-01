@@ -2,8 +2,17 @@ class EntriesController < ApplicationController
   load_and_authorize_resource
   
   def new
-    entry = Entry.create
-    redirect_to entry_step_path(:confirm_profile, :entry_id => entry.id)
+    if !params[:meeting_id]
+      redirect_to meetings_path
+    elsif current_participant
+      entry = Entry.new
+      entry.meeting = Meeting.find(params[:meeting_id])
+      entry.participant = current_participant
+      entry.save
+      redirect_to entry_step_path(:confirm_profile, :entry_id => entry.id)
+    else
+      redirect_to login_path
+    end
   end
   
   def edit

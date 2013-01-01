@@ -2,6 +2,6 @@
 
 - @meetings.each do |meeting|
   %p
-    = link_to meeting.name, edit_meeting_path(meeting)
+    = link_to meeting.name, new_entry_path(:meeting_id => meeting.id)
     = meeting.date
   

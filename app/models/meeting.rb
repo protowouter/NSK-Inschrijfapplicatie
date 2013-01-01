@@ -2,11 +2,12 @@
 #
 # Table name: meetings
 #
-#  id         :integer          not null, primary key
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  date       :date
-#  name       :string(255)
+#  id             :integer          not null, primary key
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  date           :date
+#  name           :string(255)
+#  participant_id :integer
 #
 
 class Meeting < ActiveRecord::Base

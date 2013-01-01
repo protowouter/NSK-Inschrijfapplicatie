@@ -12,6 +12,7 @@
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #  meeting_id        :integer
+#  status            :boolean
 #
 
 class Entry < ActiveRecord::Base

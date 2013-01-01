@@ -6,6 +6,10 @@ class Entries::StepsController < ApplicationController
   
   def show
     @entry = Entry.find(params[:entry_id])
+    case step
+    when :confirm_profile
+      @participant = @entry.participant
+    end
     render_wizard
   end
 end

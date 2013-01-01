@@ -16,7 +16,6 @@
 #  name                   :string(255)      default("")
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  admin                  :boolean
 #  sex_id                 :integer
 #  club_id                :integer
 #  college_id             :integer
