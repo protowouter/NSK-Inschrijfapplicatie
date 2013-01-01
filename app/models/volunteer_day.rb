@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: volunteer_days
+#
+#  id         :integer          not null, primary key
+#  day_id     :integer
+#  entry_id   :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class VolunteerDay < ActiveRecord::Base
   belongs_to :day
   belongs_to :entry
@@ -18,14 +29,3 @@ class VolunteerDay < ActiveRecord::Base
     
   end
 end
-# == Schema Information
-#
-# Table name: volunteer_days
-#
-#  id              :integer         not null, primary key
-#  day_id          :integer
-#  entry_id :integer
-#  created_at      :datetime        not null
-#  updated_at      :datetime        not null
-#
-

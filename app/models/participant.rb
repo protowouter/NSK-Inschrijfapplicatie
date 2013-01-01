@@ -1,6 +1,36 @@
+# == Schema Information
+#
+# Table name: participants
+#
+#  id                     :integer          not null, primary key
+#  email                  :string(255)      default(""), not null
+#  encrypted_password     :string(255)      default(""), not null
+#  reset_password_token   :string(255)
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#  sign_in_count          :integer          default(0)
+#  current_sign_in_at     :datetime
+#  last_sign_in_at        :datetime
+#  current_sign_in_ip     :string(255)
+#  last_sign_in_ip        :string(255)
+#  name                   :string(255)      default("")
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  admin                  :boolean
+#  sex_id                 :integer
+#  club_id                :integer
+#  college_id             :integer
+#  birthdate              :date
+#  study                  :string(255)
+#  licensenumber          :string(255)
+#
+
 class Participant < ActiveRecord::Base
-  has_one :entry, :dependent => :destroy
+  has_many :entries, :dependent => :destroy
   has_many :authentications, :dependent => :destroy
+  belongs_to :sex
+  belongs_to :club
+  belongs_to :college
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -33,24 +63,3 @@ class Participant < ActiveRecord::Base
   end
 
 end
-# == Schema Information
-#
-# Table name: participants
-#
-#  id                     :integer         not null, primary key
-#  email                  :string(255)     default(""), not null
-#  encrypted_password     :string(255)     default(""), not null
-#  reset_password_token   :string(255)
-#  reset_password_sent_at :datetime
-#  remember_created_at    :datetime
-#  sign_in_count          :integer         default(0)
-#  current_sign_in_at     :datetime
-#  last_sign_in_at        :datetime
-#  current_sign_in_ip     :string(255)
-#  last_sign_in_ip        :string(255)
-#  name                   :string(255)     default("")
-#  created_at             :datetime        not null
-#  updated_at             :datetime        not null
-#  admin                  :boolean
-#
-

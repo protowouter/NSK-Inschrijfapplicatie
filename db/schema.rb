@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120218140401) do
+ActiveRecord::Schema.define(:version => 20130101121919) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "participant_id"
@@ -42,33 +42,15 @@ ActiveRecord::Schema.define(:version => 20120218140401) do
   end
 
   create_table "entries", :force => true do |t|
-    t.string   "name"
-    t.date     "birthdate"
-    t.integer  "sex_id"
-    t.integer  "club_id"
-    t.string   "licensenumber"
-    t.integer  "college_id"
     t.integer  "participant_id"
-    t.string   "studentnumber"
     t.string   "banknumber"
     t.string   "bankAccountName"
     t.string   "bankLocation"
     t.boolean  "bankAuthorization"
-    t.boolean  "meetRegulations"
-    t.boolean  "zeusDatabase"
-    t.boolean  "diner"
-    t.boolean  "party"
-    t.string   "shirtsize"
-    t.string   "volunteerPreferences"
     t.string   "auth_hash"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
-    t.string   "study"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
-
-  add_index "entries", ["club_id"], :name => "index_entries_on_club_id"
-  add_index "entries", ["college_id"], :name => "index_entries_on_college_id"
-  add_index "entries", ["sex_id"], :name => "index_entries_on_sex_id"
 
   create_table "event_participations", :force => true do |t|
     t.integer  "event_id"
@@ -89,9 +71,15 @@ ActiveRecord::Schema.define(:version => 20120218140401) do
     t.boolean  "time_format"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "meeting_id"
   end
 
   add_index "events", ["sex_id"], :name => "index_events_on_sex_id"
+
+  create_table "meetings", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "participants", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -108,6 +96,12 @@ ActiveRecord::Schema.define(:version => 20120218140401) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.boolean  "admin"
+    t.integer  "sex_id"
+    t.integer  "club_id"
+    t.integer  "college_id"
+    t.date     "birthdate"
+    t.string   "study"
+    t.string   "licensenumber"
   end
 
   add_index "participants", ["email"], :name => "index_participants_on_email", :unique => true

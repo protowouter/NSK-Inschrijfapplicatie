@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: event_participations
+#
+#  id               :integer          not null, primary key
+#  event_id         :integer
+#  entry_id         :integer
+#  best_performance :float
+#  best_date        :date
+#  best_location    :string(255)
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#
+
 class EventParticipation < ActiveRecord::Base
   include ActionView::Helpers
   belongs_to :event
@@ -35,17 +49,3 @@ class EventParticipation < ActiveRecord::Base
       best_performance
     end
 end
-# == Schema Information
-#
-# Table name: event_participations
-#
-#  id               :integer         not null, primary key
-#  event_id         :integer
-#  entry_id         :integer
-#  best_performance :float
-#  best_date        :date
-#  best_location    :string(255)
-#  created_at       :datetime        not null
-#  updated_at       :datetime        not null
-#
-

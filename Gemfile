@@ -3,9 +3,6 @@ ruby "1.9.3"
 
 gem 'rails'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 gem 'pg'
 gem 'haml'
 gem 'devise'
