@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130101153220) do
+ActiveRecord::Schema.define(:version => 20130101155002) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "participant_id"
@@ -99,7 +99,6 @@ ActiveRecord::Schema.define(:version => 20130101153220) do
     t.string   "name",                   :default => ""
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
-    t.boolean  "admin"
     t.integer  "sex_id"
     t.integer  "club_id"
     t.integer  "college_id"
