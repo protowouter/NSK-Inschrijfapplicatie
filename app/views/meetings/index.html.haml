@@ -1,0 +1,7 @@
+%h1 Wedstrijden waarvoor je in kan schrijven
+
+- @meetings.each do |meeting|
+  %p
+    = link_to meeting.name, edit_meeting_path(meeting)
+    = meeting.date
+  

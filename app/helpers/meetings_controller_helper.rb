@@ -1,0 +1,2 @@
+module MeetingsControllerHelper
+end

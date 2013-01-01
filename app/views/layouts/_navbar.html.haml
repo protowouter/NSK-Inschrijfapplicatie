@@ -12,9 +12,6 @@
             <b class="caret"></b>
             </a>
             %ul.dropdown-menu
-              -if current_participant.entry && !current_participant.entry.new_record?
-                %li
-                  = link_to "Inschrijving aanpassen", edit_entry_path(current_participant.entry)
               %li
                 = link_to "Gegevens aanpassen", edit_participant_registration_path
               %li

@@ -11,7 +11,7 @@ class RegistrationsController < Devise::RegistrationsController
   def update
     @participant = Participant.find(current_participant.id)
     if @participant.update_attributes(params[:participant])
-      # Sign in the user by passing validation in case his password changed
+      # Sign in the user bypassing validation in case his password changed
       sign_in @participant, :bypass => true
       redirect_to root_path
     else

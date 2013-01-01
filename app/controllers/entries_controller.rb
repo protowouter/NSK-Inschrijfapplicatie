@@ -1,6 +1,5 @@
 class EntriesController < ApplicationController
   load_and_authorize_resource
-  before_filter :has_no_entry?, :only => [:new, :create]
   
    
   def index

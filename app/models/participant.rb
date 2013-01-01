@@ -27,6 +27,7 @@
 
 class Participant < ActiveRecord::Base
   has_many :entries, :dependent => :destroy
+  has_many :meetings, :through => :entries
   has_many :authentications, :dependent => :destroy
   belongs_to :sex
   belongs_to :club
@@ -37,7 +38,7 @@ class Participant < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :sex_id, :club_id, :college_id, :birthdate, :study, :licensenumber
   
   validates_presence_of :name
   

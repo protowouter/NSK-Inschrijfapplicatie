@@ -11,6 +11,15 @@
     
     = f.label :email 
     = f.text_field :email
+    
+    = f.label :birthdate
+    =date_select :f, :birthdate, :start_year => 1900
+    
+    = f.label :study
+    = f.text_field :study
+    
+    = f.label :licensenumber
+    = f.text_field :licensenumber
 
     -if @participant.password_required?
       = f.label :wachtwoord

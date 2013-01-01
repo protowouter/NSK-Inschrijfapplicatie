@@ -11,10 +11,12 @@
 #  auth_hash         :string(255)
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#  meeting_id        :integer
 #
 
 class Entry < ActiveRecord::Base
   belongs_to :participant
+  belongs_to :meeting
   has_many :event_participations, :dependent => :destroy
   has_many :events, :through => :event_participations
   has_many :volunteer_days, :dependent => :destroy
