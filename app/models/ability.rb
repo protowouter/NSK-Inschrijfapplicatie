@@ -26,19 +26,6 @@ class Ability
     # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
     
     participant ||= Participant.new
-      if participant.admin?
-        can :read, :all
-        can [:home], [Entry]
-        can :manage, [Entry] , :participant_id => participant.id
-      else
-        can :read, :all
-        can [:home], [Entry]
-        cannot :read, [Entry]
-        cannot :read, [Day]
-        cannot :read, [EventParticipation]
-        cannot :read, [VolunteerDay]
-        can :manage, [Entry] , :participant_id => participant.id
-        cannot :index, [Entry]
-      end
+      can :manage, :all
   end
 end
