@@ -19,6 +19,9 @@ Inschrijfformulier::Application.configure do
 
   # Generate digests for assets URLs
   config.assets.digest = true
+  
+  # Set logging for use with unicorn
+  config.logger = Logger.new(STDOUT)
 
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
