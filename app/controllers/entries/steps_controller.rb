@@ -12,4 +12,20 @@ class Entries::StepsController < ApplicationController
     end
     render_wizard
   end
+  
+  def update
+    @entry = Entry.find(params[:entry_id])
+    case step
+    when :volunteer, :bankaccount
+      @entry.update_params[:entry]
+    end
+    render_wizard @entry
+  end
+  
+  def finish_wizard_path
+    @entry = Entry.find(params[:entry_id])
+    @entry.active = true
+    @entry.save
+    meetings_path
+  end
 end

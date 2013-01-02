@@ -1,0 +1,22 @@
+= nested_form_for @meeting, :validate => true do |f|
+
+  = f.label :name
+  = f.text_field :name
+  
+  = f.label :date
+  = date_select :meeting, :date
+  
+  = f.fields_for :events do |ef|
+    = ef.label :naam
+    = ef.text_field :name
+    = ef.label :geslacht
+    = ef.collection_select(:sex_id, Sex.all, :id, :name)
+    = ef.label :time_format
+    = ef.select(:time_format, {:seconden => :true, :meters => :false})
+    = ef.link_to_remove "Verwijder dit onderdeel"
+  =f.link_to_add "Voeg een onderdeel toe", :events
+  
+  
+  .submit_field
+  
+    = f.submit :class => :button

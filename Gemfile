@@ -15,6 +15,7 @@ gem 'settingslogic'
 gem 'comma'
 gem 'thin'
 gem 'wicked'
+gem 'nested_form'
 
 group :development do
   gem 'annotate'

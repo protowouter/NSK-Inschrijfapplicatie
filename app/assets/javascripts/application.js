@@ -13,8 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require_tree .
 //= require rails.validations
+//= require jquery_nested_form
+//= require_tree .
 $(document).ready(function() {
   $('#entry_name').tooltip({placement: 'right', trigger: 'focus'});
   $('#entry_email').tooltip({placement: 'right', trigger: 'focus'});

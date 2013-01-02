@@ -4,4 +4,12 @@
   %p
     = link_to meeting.name, new_entry_path(:meeting_id => meeting.id)
     = meeting.date
+    - if can? :update, meeting
+      = link_to "bewerk", edit_meeting_path(meeting)
+    - if can? :destroy, meeting
+      = link_to "verwijder", meeting_path(meeting), :method => :delete
+      
+- if can? :create, Meeting
+  = link_to "nieuwe wedstrijd", new_meeting_path
+      
   

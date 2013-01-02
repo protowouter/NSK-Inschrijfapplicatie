@@ -8,8 +8,8 @@ class MeetingsController < ApplicationController
   end
 
   def create
-    meeting = Meeting.new(params[:meeting])
-    if meeting.save
+    @meeting = Meeting.new(params[:meeting])
+    if @meeting.save
       redirect_to meetings_path
     else
       render 'new'
@@ -21,8 +21,8 @@ class MeetingsController < ApplicationController
   end
 
   def update
-    meeting = Meeting.find(params[:id])
-    if meeting.update_attributes(params[:meeting])
+    @meeting = Meeting.find(params[:id])
+    if @meeting.update_attributes(params[:meeting])
       redirect_to meetings_path
     else
       render 'edit'
@@ -31,7 +31,7 @@ class MeetingsController < ApplicationController
 
   def destroy
     meeting = Meeting.find(params[:id])
-    meting.destroy
+    meeting.destroy
     redirect_to meetings_path
   end
 end

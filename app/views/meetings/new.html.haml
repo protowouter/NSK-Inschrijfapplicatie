@@ -1,13 +1,3 @@
 %h1 Nieuwe Wedstrijd
 
-= form_for @meeting do |f|
-
-  = f.label :name
-  = f.text_field :name
-  
-  = f.label :date
-  = date_select :meeting, :date
-  
-  .submit_field
-  
-    = f.submit :class => :button
+= render 'form'
