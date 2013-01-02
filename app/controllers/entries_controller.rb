@@ -8,8 +8,12 @@ class EntriesController < ApplicationController
       entry = Entry.new
       entry.meeting = Meeting.find(params[:meeting_id])
       entry.participant = current_participant
-      entry.save
-      redirect_to entry_step_path(:confirm_profile, :entry_id => entry.id)
+      if entry.save
+        redirect_to entry_step_path(:confirm_profile, :entry_id => entry.id)
+      else
+        flash[:notice] = "Je hebt je al ingeschreven voor deze wedstrijd"
+        redirect_to meetings_path
+      end
     else
       redirect_to login_path
     end

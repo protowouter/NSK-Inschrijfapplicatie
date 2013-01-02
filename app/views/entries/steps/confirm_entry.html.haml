@@ -1,3 +1,7 @@
 %h1 bevestig je inschrijving
 
+%ul.entry
+  Onderdeel gegevens:
+  = render :partial => '/event_participations/event_participation', :collection => @event_participations
+
 = link_to 'skip', next_wizard_path

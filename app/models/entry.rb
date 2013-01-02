@@ -24,5 +24,7 @@ class Entry < ActiveRecord::Base
   has_many :days, :through => :volunteer_days
   accepts_nested_attributes_for :event_participations
   validates_associated :event_participations
+  
+  validates_uniqueness_of :meeting_id , :scope => :participant_id
     
 end

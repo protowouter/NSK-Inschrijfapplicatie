@@ -1,3 +1,19 @@
-%h1 Bankgegevens
+%h2 Bankgegevens
 
-= link_to 'skip', next_wizard_path
+= form_for @entry, :url => wizard_path do |f|
+  
+  = f.label :banknumber
+  = f.text_field :banknumber
+  
+  = f.label :bankAccountName
+  = f.text_field :bankAccountName
+  
+  = f.label :bankLocation
+  = f.text_field :bankLocation
+  
+  %label.checkbox
+    = f.check_box :bankAuthorization, :validate => false
+    Ik machtig hierbij Wouter Timmermans om geld van mijn rekening af te schrijven (verplicht)
+    
+  .submit_field
+    = f.submit

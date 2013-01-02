@@ -1,0 +1,48 @@
+%h2 
+  Edit
+  = resource_name.to_s.humanize
+
+= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+
+  = f.label :naam
+  = f.text_field :name
+    
+  = f.label :email 
+  = f.text_field :email
+    
+  = f.label :birthdate
+  = date_select :f, :birthdate, :start_year => 1900
+    
+  = f.label :sex
+  = f.collection_select(:sex_id, Sex.all, :id, :name)
+    
+  = f.label :college
+  = f.collection_select(:college_id, College.all, :id, :name)
+    
+  = f.label :club
+  = f.collection_select(:club_id, Club.all, :id, :name)
+    
+  = f.label :study
+  = f.text_field :study
+    
+  = f.label :licensenumber
+  = f.text_field :licensenumber
+ 
+  = f.label :wachtwoord
+  = f.password_field :password, :autocomplete => "off"
+  %i (laat dit leeg als je het niet wilt veranderen)
+    
+  = f.label :wachtwoord_bevestiging 
+  = f.password_field :password_confirmation
+    
+  = f.label :huidig_wachtwoord
+  = f.password_field :current_password 
+  %i (we hebben je wachtwoord nodig om de wijzigingen te kunnen bevestigen)
+
+  = f.submit "Update"
+
+%h3 Verwijder mijn account
+
+%p 
+  Wil je niet meer meedoen? 
+  = link_to "Verwijder mijn account", registration_path(resource_name), :confirm => "Weet je het zeker?", :method => :delete 

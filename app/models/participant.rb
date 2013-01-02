@@ -39,14 +39,10 @@ class Participant < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :sex_id, :club_id, :college_id, :birthdate, :study, :licensenumber
   
-  validates_presence_of :name
+  validates_presence_of :name, :sex_id, :club_id, :college_id
   
   def apply_omniauth(omniauth)
     authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
-  end
-  
-  def password_required?
-    (authentications.empty? || !password.blank?) && super
   end
   
 

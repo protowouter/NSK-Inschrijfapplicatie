@@ -1,0 +1,16 @@
+= nested_form_for @entry, :url => wizard_path do |f|
+  
+  = f.fields_for :event_participations do |ef|
+    = ef.label :event_id
+    = ef.collection_select(:event_id, @events, :id, :name)
+    = ef.label :best_performance
+    = ef.text_field :best_performance
+    = ef.date_select :best_date
+    = ef.label :best_location
+    = ef.text_field :best_location
+    
+  .submit_field
+    = f.submit
+    
+  = f.link_to_add "Voeg een onderdeel toe", :event_participations
+  

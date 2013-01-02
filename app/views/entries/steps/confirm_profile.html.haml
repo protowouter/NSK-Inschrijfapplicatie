@@ -1,6 +1,28 @@
-%h1 Controleer a.u.b. je gegevens
+%h2 Controleer a.u.b. je gegevens
 
-= @participant.name
+%ul
+  %li 
+    Naam:
+    = @participant.name
+  %li
+    Geslacht:
+    = @participant.sex.name
+  %li
+    Email:
+    = @participant.email
+  %li
+    Onderwijsinstelling:
+    = @participant.college.name
+  %li
+    Vereniging:
+    = @participant.club.name
+  %li
+    Studie:
+    = @participant.study
+  %li
+    Licentienummber:
+    = @participant.licensenumber
+    
 
-
-= link_to 'Ok', next_wizard_path
+= link_to 'Deze gegevens kloppen niet', edit_registration_path(@participant)
+= link_to 'Deze gegevens kloppen', next_wizard_path
