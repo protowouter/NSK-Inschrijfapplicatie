@@ -13,7 +13,7 @@ gem 'client_side_validations'
 gem 'cancan'
 gem 'settingslogic'
 gem 'comma'
-gem 'thin'
+gem 'unicorn'
 gem 'wicked'
 gem 'nested_form'
 
