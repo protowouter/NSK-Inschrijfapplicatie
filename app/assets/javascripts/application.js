@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require rails.validations
+//= require rails.validations.nested_form
 //= require jquery_nested_form
 //= require_tree .
 $(document).ready(function() {
@@ -23,5 +24,9 @@ $(document).ready(function() {
   $(".alert-message").alert()
   $(".alert").alert()
   setTimeout("$('.flash').fadeOut('slow');", 3000);
+});
+
+$('form').on('nested:fieldAdded', function(event) {
+  $(event.target).find(':input').enableClientSideValidations();
 });
 

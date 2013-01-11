@@ -3,5 +3,7 @@
 %ul.entry
   Onderdeel gegevens:
   = render :partial => '/event_participations/event_participation', :collection => @event_participations
-
-= link_to 'skip', next_wizard_path
+  
+  = form_for @entry, :url => wizard_path, :validate => true do |f|
+    .submit_field
+      = f.submit

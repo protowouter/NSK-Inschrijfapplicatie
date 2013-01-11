@@ -6,30 +6,28 @@ class Entries::StepsController < ApplicationController
   
   def show
     @entry = Entry.find(params[:entry_id])
-    case step
-    when :confirm_profile
-      @participant = @entry.participant
-    when :events
-      @events = @entry.meeting.events
-    when :confirm_entry
-      @event_participations = @entry.event_participations
-    end
+    @participant = @entry.participant
+    @events = @entry.meeting.events
+    @event_participations = @entry.event_participations
+
     render_wizard
   end
   
   def update
     @entry = Entry.find(params[:entry_id])
-    case step
-    when :volunteer, :bankaccount, :events
-      @entry.update_attributes(params[:entry])
-    end
+    params[:entry] ||= {}
+    params[:entry][:status] = step.to_s
+    params[:entry][:status] = 'active' if step == steps.last
+    @entry.update_attributes(params[:entry])
+    
+    @participant = @entry.participant
+    @events = @entry.meeting.events
+    @event_participations = @entry.event_participations
+    
     render_wizard @entry
   end
   
   def finish_wizard_path
-    @entry = Entry.find(params[:entry_id])
-    @entry.active = true
-    @entry.save
     meetings_path
   end
 end

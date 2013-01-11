@@ -6,12 +6,12 @@ class EntriesController < ApplicationController
       redirect_to meetings_path
     elsif current_participant
       entry = Entry.new
-      entry.meeting = Meeting.find(params[:meeting_id])
+      meeting = Meeting.find(params[:meeting_id])
+      entry.meeting = meeting
       entry.participant = current_participant
       if entry.save
         redirect_to entry_step_path(:confirm_profile, :entry_id => entry.id)
       else
-        flash[:notice] = "Je hebt je al ingeschreven voor deze wedstrijd"
         redirect_to meetings_path
       end
     else
@@ -20,6 +20,7 @@ class EntriesController < ApplicationController
   end
   
   def edit
+    flash.keep(:notice)
     entry = Entry.find(params[:id])
     redirect_to entry_step_path(:confirm_profile, :entry_id => entry.id)
   end
@@ -32,19 +33,10 @@ class EntriesController < ApplicationController
   end
   
   private
-      def participant_current_participant?
-        @entry = Entry.find(params[:id])
-        if current_participant != @entry.participant
-          redirect_to root_path
-        end
-      end
+    def get_facebook_token
+      client = OAuth2::Client.new(Settings.facebook_appid, Settings.facebook_appsecret, :site => 'https://graph.facebook.com')
+      token = OAuth2::AccessToken.new(client, session['fb_access_token'])
       
-      
-      def get_facebook_token
-        client = OAuth2::Client.new(Settings.facebook_appid, Settings.facebook_appsecret, :site => 'https://graph.facebook.com')
-        token = OAuth2::AccessToken.new(client, session['fb_access_token'])
-        
-        return token
-      end
-         
+      token
+    end
 end

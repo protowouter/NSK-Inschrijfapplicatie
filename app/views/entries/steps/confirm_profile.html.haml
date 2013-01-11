@@ -23,6 +23,7 @@
     Licentienummber:
     = @participant.licensenumber
     
-
-= link_to 'Deze gegevens kloppen niet', edit_registration_path(@participant)
-= link_to 'Deze gegevens kloppen', next_wizard_path
+= form_for @entry, :url => wizard_path, :validate => true do |f|
+  .navigation
+    = link_to 'Deze gegevens kloppen niet', edit_registration_path(@participant), :class => "btn btn-warning"
+    = f.submit :class => :btn, :value => :Volgende

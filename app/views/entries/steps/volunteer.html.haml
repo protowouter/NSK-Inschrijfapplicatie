@@ -1,3 +1,5 @@
 %h1 voor welke dagen wil je vrijwilligeren
 
-= link_to 'Ik ben geen vrijwilliger', next_wizard_path
+= form_for @entry, :url => wizard_path, :validate => true do |f|
+  .submit_field
+    = f.submit

@@ -1,6 +1,6 @@
 %h2 Bankgegevens
 
-= form_for @entry, :url => wizard_path do |f|
+= form_for @entry, :url => wizard_path, :validate => true do |f|
   
   = f.label :banknumber
   = f.text_field :banknumber
