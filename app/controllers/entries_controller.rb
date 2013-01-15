@@ -34,12 +34,5 @@ class EntriesController < ApplicationController
     flash[:success] = "Inschrijving verwijderd"
       redirect_to entries_path
   end
-  
-  private
-    def get_facebook_token
-      client = OAuth2::Client.new(Settings.facebook_appid, Settings.facebook_appsecret, :site => 'https://graph.facebook.com')
-      token = OAuth2::AccessToken.new(client, session['fb_access_token'])
-      
-      token
-    end
+    
 end

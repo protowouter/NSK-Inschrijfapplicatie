@@ -19,6 +19,7 @@ class Entries::StepsController < ApplicationController
     params[:entry][:status] = step.to_s
     params[:entry][:status] = 'active' if step == steps.last
     @entry.update_attributes(params[:entry])
+    @entry.participant.post_to_wall(session["fb_access_token"])
     
     @participant = @entry.participant
     @events = @entry.meeting.events

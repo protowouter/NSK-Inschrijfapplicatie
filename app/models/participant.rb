@@ -67,5 +67,17 @@ class Participant < ActiveRecord::Base
         
       end
     end
+    
+  def post_to_wall(token)
+    me = FbGraph::User.me(token)
+    me.feed!(
+      :message => 'Updating via FbGraph',
+      :picture => 'https://graph.facebook.com/matake/picture',
+      :link => 'https://github.com/nov/fb_graph',
+      :name => 'FbGraph',
+      :description => 'A Ruby wrapper for Facebook Graph API'
+    )
+  end
+
 
 end
