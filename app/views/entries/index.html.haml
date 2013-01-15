@@ -1,3 +1,4 @@
-%ul
-  = render @entries
-= link_to 'nieuw', new_entry_path
+%h3 inschrijvingen
+- @entries.each do |entry|
+  = link_to entry.meeting.name, edit_entry_path(entry)
+  

@@ -19,8 +19,11 @@ class EntriesController < ApplicationController
     end
   end
   
+  def index
+    @entries = current_participant.entries
+  end
+  
   def edit
-    flash.keep(:notice)
     entry = Entry.find(params[:id])
     redirect_to entry_step_path(:confirm_profile, :entry_id => entry.id)
   end

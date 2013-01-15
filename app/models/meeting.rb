@@ -13,6 +13,7 @@
 class Meeting < ActiveRecord::Base
   has_many :events, :dependent => :destroy
   has_many :entries, :dependent => :destroy
+  has_many :participants, :through => :entries
   belongs_to :participant
   accepts_nested_attributes_for :events, :allow_destroy => :true
   validates_associated :events
