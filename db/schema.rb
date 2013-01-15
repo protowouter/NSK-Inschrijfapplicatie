@@ -11,17 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130101200308) do
-
-  create_table "authentications", :force => true do |t|
-    t.integer  "participant_id"
-    t.string   "provider"
-    t.string   "uid"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-  end
-
-  add_index "authentications", ["participant_id"], :name => "index_authentications_on_participant_id"
+ActiveRecord::Schema.define(:version => 20130115165419) do
 
   create_table "clubs", :force => true do |t|
     t.string   "name"
@@ -106,6 +96,8 @@ ActiveRecord::Schema.define(:version => 20130101200308) do
     t.date     "birthdate"
     t.string   "study"
     t.string   "licensenumber"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "participants", ["email"], :name => "index_participants_on_email", :unique => true

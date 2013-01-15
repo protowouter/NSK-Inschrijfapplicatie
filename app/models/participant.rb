@@ -22,40 +22,50 @@
 #  birthdate              :date
 #  study                  :string(255)
 #  licensenumber          :string(255)
+#  provider               :string(255)
+#  uid                    :string(255)
 #
 
 class Participant < ActiveRecord::Base
   has_many :entries, :dependent => :destroy
   has_many :meetings, :through => :entries
-  has_many :authentications, :dependent => :destroy
   belongs_to :sex
   belongs_to :club
   belongs_to :college
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable,
+         :validatable, :omniauthable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :sex_id, :club_id, :college_id, :birthdate, :study, :licensenumber
-  
+  attr_accessible :email, :password, :password_confirmation,
+                  :remember_me, :name, :sex_id, :club_id, 
+                  :college_id, :birthdate, :study, :licensenumber,
+                  :provider, :uid
+
   validates_presence_of :name, :sex_id, :club_id, :college_id
   
-  def apply_omniauth(omniauth)
-    authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
+  def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
+    participant = Participant.where(:provider => auth.provider, :uid => auth.uid).first
+    unless participant
+      participant = Participant.new
+    end
+    participant
   end
   
-
-  def facebook(access_token)
-    @fb_user ||= FbGraph::User.me(access_token)
-  end
-  
-  def publish(text, feed_name, token)
-
-    facebook(token).feed!(:message => text, :name => feed_name)
-
-
-    #rescue Exception => e
-  end
+  def self.new_with_session(params, session)
+      super.tap do |participant|
+        if data = session["devise.facebook_data"]
+          participant.provider = session["devise.facebook_data"]["provider"] if participant.provider.blank?
+          participant.uid = session["devise.facebook_data"]["uid"] if participant.uid.blank?
+          participant.name = data["name"] if participant.name.blank?
+          if session["devise.facebook_data"]["extra"]["raw_info"]
+            participant.email = data["email"] if participant.email.blank?
+          end   
+        end
+        
+      end
+    end
 
 end

@@ -10,7 +10,8 @@
   %p
     = link_to "Maak een account", new_participant_registration_path, :class => "btn btn-large"
     of
-    = link_to "Verbind met Facebook", "/auth/facebook", :class => "btn btn-large btn-primary"
+    = link_to "Verbind met Facebook", participant_omniauth_authorize_path(:facebook), :class => "btn btn-large btn-primary"
+    
 %div.row
   %div.span4
     %h1 Inloggen

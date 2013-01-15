@@ -1,7 +1,8 @@
 # config/application.yml
 defaults: &defaults
-  facebook_appid: ""
-  facebook_appsecret: ""
+  facebook_appid: <%= ENV['FB_ID'] %>
+  facebook_appsecret: <%= ENV['FB_SECRET'] %>
+  ca_file: <%= ENV['CA_FILE'] %>
   
 development:
     <<: *defaults

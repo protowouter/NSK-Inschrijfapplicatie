@@ -1,10 +1,7 @@
 Inschrijfformulier::Application.routes.draw do
   resources :event_participations
 
-  match '/auth/:provider/callback' => 'authentications#create'  
-
-  devise_for :participants, :controllers => { :registrations => 'registrations' }
-  resources :authentications
+  devise_for :participants, :controllers => { :registrations => 'participants', :omniauth_callbacks => "participants/omniauth_callbacks" }
   resources :entries do
     resources :steps, controller: 'entries/steps'
   end
