@@ -1,5 +1,13 @@
-<ul class="nav nav-list">
-<li class="nav-header">List header</li>
-<li class="active"><a href="#">Home</a></li>
-<li><a href="#">Library</a></li>
-</ul>
+.well.sidebar-nav
+  %ul.nav.nav-list
+    %ul.nav-header
+      Menu
+    %li
+      = link_to "Home" , root_path
+    -if participant_signed_in?
+      %li
+        = link_to "Gegevens aanpassen", edit_participant_registration_path
+      %li
+        = link_to "Inschrijvingen", entries_path
+      %li
+        = link_to "Log uit", destroy_participant_session_path, :method => :delete
