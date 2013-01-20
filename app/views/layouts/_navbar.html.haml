@@ -1,9 +1,9 @@
-%div.navbar
-  %div.navbar-inner
-    %div.container
-      %ul.nav
-        %li.active
-          = link_to "NSK Baan 2012", root_path, :class => "brand"
+.navbar
+  .navbar-inner
+    .container
+      .nav  
+        .active
+          = link_to "NSK Inschrijven", root_path, :class => "brand"
       -if participant_signed_in?
         %ul.nav.pull-right
           %li.dropdown

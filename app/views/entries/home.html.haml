@@ -1,18 +1,8 @@
-%div.hero-unit
-  %h1 Welkom
-  %p
-    Om je in te schrijven voor het NSK Baan 2012 moet je eerst een account aanmaken. Met dit account kun je vervolgens op een later tijdstip je inschrijving weer aanpassen.
-    De snelste optie is om te verbinden met facebook, je hoeft dan niet een extra wachtwoord te onthouden en je kunt meteen beginnen met inschrijven.
-  %p
-    Ook als je je wilt aanmelden als vrijwilliger kun je op bovenstaande manier te werk gaan.
-  %p
-    Inschrijven of gegevens wijzigen is mogelijk tot maandag 7 mei 2012 om 23:59.
-  %p
-    = link_to "Maak een account", new_participant_registration_path, :class => "btn btn-large"
-    of
-    = link_to "Verbind met Facebook", participant_omniauth_authorize_path(:facebook), :class => "btn btn-large btn-primary"
+= link_to "Maak een account", new_participant_registration_path, :class => "btn btn-large"
+of
+= link_to "Verbind met Facebook", participant_omniauth_authorize_path(:facebook), :class => "btn btn-large btn-primary"
     
-%div.row
+.row-fluid
   %div.span4
     %h1 Inloggen
     %p Als je al eerder een account had aangemaakt, kun je hier meteen inloggen
@@ -21,7 +11,3 @@
     %h1 Deelnemerlijst
     %p Klik hieronder om de meest actuele deelnemerslijst te bekijken
     = link_to "Deelnemers", events_path, :class => "btn"
-  %div.span4
-    %h1 Informatie
-    %p Voor informatie over het NSK Baan 2012 kun je terecht op de website
-    = link_to "Naar de website", "http://nskbaan.kronos.nl", :class => "btn"

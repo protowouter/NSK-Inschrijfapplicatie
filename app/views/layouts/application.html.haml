@@ -2,27 +2,26 @@
 %html
   %head
     %title Inschrijfformulier
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--[if lt IE 9]
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     ![endif]-->
     = stylesheet_link_tag    "application"
     = javascript_include_tag "application"
     = csrf_meta_tags
-
-  %body{:class => "#{params[:action] == 'home' || params[:controller] == 'events' ? 'white_background' : ''}"}
-    #main
-      .loader{ :style => "display:none"}
-        =image_tag 'spin.gif'
-      = render "layouts/navbar"
-      .container
-        
-
-        %section{:class => "round"}
+  %body
+    .container-fluid
+      .row-fluid
+        .span2
+          = render "layouts/sidebar"
+        .span10
           -flash.each do |key, value|
-            - henk = key=="alert" ? "flash alert-#{key} fade in" : "flash alert fade in" 
-            %div{:class => henk}
+            - aClass = key == "alert" ? "flash alert-#{key} fade in" : "flash alert fade in" 
+            %div{:class => aClass}
               =value
-              %a{:class => :close, "data-dismiss" => "alert"} x
+              %a{:class => :close, "data-dismiss" => "alert"} &times;
           
           
-        = yield
+          = yield
+      
+      
